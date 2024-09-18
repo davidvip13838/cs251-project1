@@ -1,0 +1,8 @@
+Sample input 1:
+2 3  //N=2, number of requests; T=3, time to storage (one-way)
+0 4  //Request 0 comes in at time 0 and request 1 comes in at time 4
+
+Sample output 1:
+1 8
+0 12
+Explanation: At time 0, the drone starts traveling from the player to storage.  At time 4, drone D drops item A and travels 1 time step back to storage to retrieve item B, then travels 3 time steps to the player to deliver item B, then travels 2 time steps back to where it dropped item A, then travels 2 final time steps to deliver item A.
