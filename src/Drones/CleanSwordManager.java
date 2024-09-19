@@ -1,4 +1,6 @@
 package Drones;
+import CommonUtils.BetterQueue;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -47,8 +49,8 @@ public class CleanSwordManager implements CleanSwordManagerInterface {
 
             // intializing queues
             ArrayList<Integer> swords = new ArrayList<>();
-            ArrayList<Integer> request_sitting = new ArrayList<>();
-            ArrayList<Integer> request_running = new ArrayList<Integer>();
+            BetterQueue<Integer> request_sitting = new BetterQueue<Integer>();
+            BetterQueue<Integer> request_running = new BetterQueue<Integer>();
 
             // add all existing swords
             for (int i = 0; i < N; i++) {
@@ -63,8 +65,8 @@ public class CleanSwordManager implements CleanSwordManagerInterface {
             int time  = 0;
             while (!request_running.isEmpty() || !request_sitting.isEmpty()) {
                 // add sitting request to running if its their time
-                while (request_sitting.size() != 0 && request_sitting.get(0) == time) {
-                    request_running.add(request_sitting.remove(0));
+                while (request_sitting.size() != 0 && request_sitting.peek() == time) {
+                    request_running.add(request_sitting.remove());
                     swords.add(T);
                 }
                 // check if sword is done, if not decrement 1
@@ -80,8 +82,7 @@ public class CleanSwordManager implements CleanSwordManagerInterface {
                         break;
                     }
                     else {
-                        ans.add(new CleanSwordTimes(time, time - request_running.get(0)));
-                        request_running.remove(0);
+                        ans.add(new CleanSwordTimes(time, time - request_running.remove()));
                         swords.remove(0);
                     }
                 }
