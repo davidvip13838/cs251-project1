@@ -11,7 +11,7 @@ import java.awt.*;
  * (including LinkedList, for example) and any other java.util.* library EXCEPT java.util.Objects.
  * Write your own implementation of a Queue.
  *
- * @param <E> the type of object this queue will be holding
+ * @param <E> thse type of object this queue will be holding
  */
 public class BetterQueue<E> implements BetterQueueInterface<E> {
 
